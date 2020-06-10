@@ -1,96 +1,79 @@
 import React from 'react';
+import styled from 'styled-components';
+import { styled as MuiStyled } from '@material-ui/core/styles';
+
 import MenuIcon from '@material-ui/icons/Menu';
-import HomeIcon from '@material-ui/icons/Home';
-import RestoreIcon from '@material-ui/icons/Restore';
-import BookmarksIcon from '@material-ui/icons/Bookmarks';
-import SettingsIcon from '@material-ui/icons/Settings';
-import PolicyIcon from '@material-ui/icons/Policy';
-import FindInPageIcon from '@material-ui/icons/FindInPage';
-import HelpIcon from '@material-ui/icons/Help';
-import FeedbackIcon from '@material-ui/icons/Feedback';
+import AppsIcon from '@material-ui/icons/Apps';
 
-import { Drawer, AppBar, Tabs, Tab, Divider, Button, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Button, Drawer, IconButton, Box } from '@material-ui/core';
 
+import DrawerList from './DrawerList'
+import HomeTabs from './HomeTabs'
+
+const Img = styled.img`  
+width: 120px;
+margin-top: 20px;
+margin-left: -60px
+`
+
+const Nav = styled.nav`
+  display:flex;
+  justify-content: space-between
+`
+
+const MyButton = MuiStyled(Button)({
+  height: 35,
+  margin: 5,
+  background: '#FFFFFF'
+});
+
+const MyBox = MuiStyled(Box)({
+  display: 'flex',
+  width: '60%'
+});
 
 export default function HomeNavBar() {
-  const [value, setValue] = React.useState(2);
 
-  const handleTabs = (event, newValue) => {
-    setValue(newValue);
-  };
+  const [drawerState, setState] = React.useState(false);
 
-  const toggleDrawer = (open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    };
+
+
+  const openDrawer = () => {
+    setState(true)
+  }
+  const closeDrawer = () => {
+    setState(false)
   }
 
-  const ItemsList = [
-    {
-      text: 'Home',
-      icon: <HomeIcon />
-    },
-    {
-      text: 'Search activity',
-      icon: <RestoreIcon />,
-    },
-    {
-      text: 'Collections',
-      icon: <BookmarksIcon />,
-    },
-    {
-      text: 'Settings',
-      icon: <SettingsIcon />,
-    },
-    {
-      text: 'Your data in Search',
-      icon: <PolicyIcon />,
-    },
-    {
-      text: 'How Search works',
-      icon: <FindInPageIcon />,
-    },
-    {
-      text: 'Help',
-      icon: <HelpIcon />,
-    },
-    {
-      text: 'Send feedback',
-      icon: <FeedbackIcon />,
-    }
-  ]
-
   return (
-    <nav>
-      <Drawer onClose={toggleDrawer(false)} open>
-        <List>
-          {ItemsList.map((item, index) => {
-            const { text, icon } = item;
-            return (
-              <ListItem key={text}>
-                {icon && <ListItemIcon>{icon}</ListItemIcon>}
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          })}
-        </List>
-        <Divider />
+    <Nav className='HomeNavBar'>
+
+      <Drawer open={drawerState}>
+        <IconButton variant="text" color="default">
+          <Img src="../logo.svg" alt="logo" onClick={closeDrawer} />
+        </IconButton>
+        <DrawerList />
       </Drawer>
-      <AppBar color='transparent'>
-        <Tabs
-          value={value}
-          indicatorColor="primary"
-          textColor="primary"
-          onChange={handleTabs}
-          aria-label=""
-        >
-          <Button onClick={toggleDrawer}>
-            <MenuIcon />
-          </Button>
-          <Tab label="All" />
-          <Tab label="Images" />
-        </Tabs>
-      </AppBar>
-    </nav>
+
+      <MyBox>
+        <Button onClick={openDrawer}>
+          <MenuIcon color='action' />
+        </Button>
+
+        <HomeTabs />
+      </MyBox>
+
+      <Box>
+        <IconButton variant="text" color="default">
+          <AppsIcon />
+        </IconButton>
+        <MyButton variant="outlined" color="default" size="small">
+          Sign in
+        </MyButton>
+      </Box>
+
+
+
+    </Nav>
   )
 }
