@@ -1,18 +1,17 @@
 import React from 'react'
 
 import { Tabs, Tab } from '@material-ui/core';
-import { styled as MuiStyled } from '@material-ui/core/styles';
+import { useStyles } from './styles.js'
+
 
 export default function HomeTabs() {
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(1);
 
   const handleTabs = (event, newValue) => {
     setValue(newValue);
   };
 
-  const MyTab = MuiStyled(Tab)({
-    padding: 5
-  });
+  const classes = useStyles();
 
   return (
     <Tabs
@@ -22,8 +21,9 @@ export default function HomeTabs() {
       onChange={handleTabs}
       aria-label=""
     >
-      <MyTab label="All" />
-      <MyTab label="Images" />
+      <Tab className={classes.root} label="All" />
+      <Tab className={classes.root} label="Images" />
+
     </Tabs>
   )
 }

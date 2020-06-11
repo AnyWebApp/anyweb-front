@@ -1,10 +1,11 @@
 import React from 'react';
-import HomeNavBar from '../components/HomeNavBar';
+import HomeNavBar from '../components/HomeNavBar/HomeNavBar';
 
 function Home() {
   return (
     <>
       <HomeNavBar />
+
     </>
   );
 }

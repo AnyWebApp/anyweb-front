@@ -1,0 +1,16 @@
+.home-navbar {
+	display: flex;
+	justify-content: space-between;
+}
+
+.drawer-logo {
+	width: 120px;
+	margin-top: 20px;
+	margin-left: -60px;
+}
+
+.menu-icon {
+	padding: 0;
+	min-width: 0;
+	max-width: 0;
+}
