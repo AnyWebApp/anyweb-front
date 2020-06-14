@@ -1,41 +1,22 @@
 import React from 'react';
-import './HomeNavBar.css'
 
-import MenuIcon from '@material-ui/icons/Menu';
+import './styles.css'
+import { useStyles } from './styles'
+
 import AppsIcon from '@material-ui/icons/Apps';
+import { Box, IconButton } from '@material-ui/core';
 
-import { Drawer, IconButton, Box, Button } from '@material-ui/core';
-import HomeTabs from './HomeTabs/HomeTabs'
-
-import SignInButton from './SignInButton/SignInButton'
-import DrawerList from './DrawerList'
-
-import { useTabsBoxStyles } from './TabsBox/TabsBox'
-
+import HomeTabs from '../HomeTabs/HomeTabs'
+import SignInButton from '../SignInButton'
+import DrawerButton from '../DrawerButton/DrawerButton';
 
 export default function HomeNavBar() {
-  const classes = useTabsBoxStyles();
-  const [drawerState, setState] = React.useState(false);
-
-  const openDrawer = () => {
-    setState(true)
-  }
-  const closeDrawer = () => {
-    setState(false)
-  }
+  const classes = useStyles();
 
   return (
     <nav className='home-navbar'>
-      <Drawer open={drawerState}>
-        <IconButton variant="text" color="default" >
-          <img src="../logo.svg" alt="logo" onClick={closeDrawer} className='drawer-logo' />
-        </IconButton>
-        <DrawerList />
-      </Drawer>
-      <Box className={classes.tabsbox}>
-        <Button onClick={openDrawer} size='small' className={classes.menuicon}>
-          <MenuIcon color='action' />
-        </Button>
+      <Box className={classes.tabsBox}>
+        <DrawerButton />
         <HomeTabs />
       </Box>
       <Box>

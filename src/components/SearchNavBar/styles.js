@@ -1,14 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useTabsBoxStyles = makeStyles({
-  tabsbox: {
+export const useStyles = makeStyles({
+  tabsBox: {
     display: 'flex',
     width: '60%'
   },
-  menuicon: {
+  menuIcon: {
     padding: 0,
     minWidth: 50
   }
 });
-
 
