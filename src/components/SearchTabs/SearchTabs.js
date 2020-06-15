@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useStyles } from './SearchTabs.styles';
 
-import { Tabs, Tab, Typography, Box, Divider } from '@material-ui/core/';
+import { Tabs, Tab, Container, Divider } from '@material-ui/core/';
+
+import SearchCard from '../SearchCard/SearchCard';
 
 function TabPanel(props) {
-  const classes = useStyles();
   const { children, value, index, ...other } = props;
 
   return (
@@ -17,9 +18,9 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={2}>
-          <Typography className={classes.font}>{children}</Typography>
-        </Box>
+        <Container p={2} disableGutters='true'>
+          {children}
+        </Container>
       )}
     </div>
   );
@@ -67,8 +68,8 @@ export default function ScrollableTabsButtonAuto() {
         <Tab label="Shopping" {...a11yProps(5)} className={classes.tab} />
       </Tabs>
       <Divider className={classes.divider} />
-      <TabPanel value={value} index={0} >
-        Item One
+      <TabPanel value={value} index={0}>
+        <SearchCard />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
@@ -85,7 +86,6 @@ export default function ScrollableTabsButtonAuto() {
       <TabPanel value={value} index={5}>
         Item Six
       </TabPanel>
-
     </div>
   );
 }

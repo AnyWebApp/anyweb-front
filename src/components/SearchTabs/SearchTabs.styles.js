@@ -12,7 +12,7 @@ export const useStyles = makeStyles({
     paddingBottom: 0
   },
   divider: {
-    boxshadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)'
+    boxshadow: '0 1px 6px rgba(32, 33, 36, 0.28);'
   }
 });
 
