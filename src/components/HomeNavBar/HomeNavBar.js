@@ -1,7 +1,6 @@
 import React from 'react';
 
-import './styles.css'
-import { useStyles } from './styles'
+import { useStyles } from './HomeNavBar.styles'
 
 import AppsIcon from '@material-ui/icons/Apps';
 import { Box, IconButton } from '@material-ui/core';
@@ -14,7 +13,7 @@ export default function HomeNavBar() {
   const classes = useStyles();
 
   return (
-    <nav className='home-navbar'>
+    <nav className={classes.homeNavBar}>
       <Box className={classes.tabsBox}>
         <DrawerButton />
         <HomeTabs />

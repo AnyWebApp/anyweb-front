@@ -4,7 +4,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Drawer, IconButton, Button } from '@material-ui/core';
 import DrawerList from '../DrawerList'
 
-import { useStyles } from './styles'
+import { useStyles } from './DrawerButton.styles'
 
 export default function DrawerButton() {
   const classes = useStyles();

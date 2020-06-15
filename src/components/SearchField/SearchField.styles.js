@@ -2,15 +2,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: 25,
+    marginTop: 10,
     paddingLeft: '10px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: ' 20px ',
     width: '90vw',
-    boxShadow: '0px',
-    height: '34px',
+    border: '0.1px solid lightgray',
+    boxShadow: 'none',
+    height: '36px',
     overflow: 'hidden'
   },
   input: {

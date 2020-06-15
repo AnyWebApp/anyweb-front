@@ -5,9 +5,13 @@ export const useStyles = makeStyles({
     display: 'flex',
     width: '60%'
   },
-  menuIcon: {
-    padding: 0,
-    minWidth: 50
+  homeNavBar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  drawerLogo: {
+
   }
 });
+
 

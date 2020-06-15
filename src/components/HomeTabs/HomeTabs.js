@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Tabs, Tab } from '@material-ui/core';
-import { useStyles } from './styles.js'
+import { useStyles } from './HomeTabs.styles.js'
 
 export default function HomeTabs() {
   const [value, setValue] = React.useState(1);
