@@ -18,7 +18,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Container p={2} disableGutters='true'>
+        <Container p={2} disableGutters={true}>
           {children}
         </Container>
       )}

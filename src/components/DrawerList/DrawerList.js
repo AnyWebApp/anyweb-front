@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useStyles } from './DrawerList.styles'
+
 import HomeIcon from '@material-ui/icons/Home';
 import RestoreIcon from '@material-ui/icons/Restore';
 import BookmarksIcon from '@material-ui/icons/Bookmarks';
@@ -12,7 +14,7 @@ import FeedbackIcon from '@material-ui/icons/Feedback';
 import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
 export default function DrawerList() {
-
+  const classes = useStyles();
   const ItemsList = [
     {
       text: 'Home',
@@ -47,13 +49,14 @@ export default function DrawerList() {
       icon: <FeedbackIcon />,
     }
   ]
+
   return (
     <List>
       {ItemsList.map((item) => {
         const { text, icon } = item;
         return (
-          <ListItem key={text}>
-            {icon && <ListItemIcon>{icon}</ListItemIcon>}
+          <ListItem key={text} className={classes.listItem}>
+            {icon && <ListItemIcon className={classes.listItemIcon}>{icon}</ListItemIcon>}
             <ListItemText primary={text} />
           </ListItem>
         )
