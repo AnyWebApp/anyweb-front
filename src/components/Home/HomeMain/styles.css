@@ -1,0 +1,16 @@
+.home-main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.container-logo {
+	width: 100vw;
+	height: 20vh;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+.main-logo {
+	height: 45%;
+}

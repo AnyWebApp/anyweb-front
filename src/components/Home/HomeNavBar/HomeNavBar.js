@@ -7,8 +7,8 @@ import AppsIcon from '@material-ui/icons/Apps';
 import { Box, IconButton } from '@material-ui/core';
 
 import HomeTabs from '../HomeTabs/HomeTabs'
-import SignInButton from '../SignInButton'
-import DrawerButton from '../DrawerButton/DrawerButton';
+import SignInButton from '../../SignInButton'
+import DrawerButton from '../../DrawerButton/DrawerButton';
 
 export default function HomeNavBar() {
   const classes = useStyles();

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SearchNavBar from '../components/SearchNavBar/SearchNavBar'
+import SearchNavBar from '../../components/Search/SearchNavBar/SearchNavBar'
 
 function Search() {
   return (

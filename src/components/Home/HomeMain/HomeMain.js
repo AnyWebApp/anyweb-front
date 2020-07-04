@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SearchField from '../SearchField/SearchField'
+import SearchField from '../../SearchField/SearchField'
 
 import './styles.css'
 
