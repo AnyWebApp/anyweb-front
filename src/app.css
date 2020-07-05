@@ -1,11 +1,11 @@
-ul {
+.app-ul {
   display: flex;
   justify-content: center;
   align-items: center;
   list-style-type: none;
 }
 
-li {
+.app-li {
   padding: 10px;
   border: 1px solid black;
   margin: 5px;

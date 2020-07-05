@@ -9,14 +9,6 @@ import './app.css'
 function App() {
   return (
     <Router>
-      <ul>
-        <li>
-          <Link to="/home" className='link'>Home</Link>
-        </li>
-        <li>
-          <Link to="/search" className='link'>Search</Link>
-        </li>
-      </ul>
       <Switch>
         <Route exact path="/search">
           <Search />
@@ -25,6 +17,14 @@ function App() {
           <Home />
         </Route>
       </Switch>
+      <ul className='app-ul'>
+        <li className='app-li'>
+          <Link to="/home" className='link'>Home</Link>
+        </li>
+        <li className='app-li'>
+          <Link to="/search" className='link'>Search</Link>
+        </li>
+      </ul>
     </Router>
   )
 }
