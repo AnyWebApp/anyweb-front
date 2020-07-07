@@ -3,9 +3,8 @@ import React from 'react';
 import HomeNavBar from '../../components/Home/HomeNavBar/HomeNavBar';
 import SearchField from '../../components/SearchField/SearchField';
 
-/* import './styles.css' */
-
 import { HomeMain, LogoContainer, LogoImg } from './styles'
+import HomeFooter from '../../components/HomeFooter/HomeFooter';
 
 function Home() {
   return (
@@ -17,6 +16,7 @@ function Home() {
         </LogoContainer>
         <SearchField />
       </HomeMain>
+      <HomeFooter />
     </>
   );
 }
