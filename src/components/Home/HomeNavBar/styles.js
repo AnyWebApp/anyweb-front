@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export const useStyles = makeStyles({
   tabsBox: {
     display: 'flex',
+    alignItems: 'center',
     width: '60%'
   },
 });

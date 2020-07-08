@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Footer = styled.footer`
   background: #F2F2F2;
-  height: 100px;
+  height: 80px;
   width:100%;
   display:flex;
   align-items:center;
@@ -16,7 +16,7 @@ export const Button = styled.button`
   font-size: 13px;
 
   @media(min-width: 768px) {
-		font-size: 16px;
+		font-size: 15px;
   }
 `
 

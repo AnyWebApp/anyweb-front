@@ -16,12 +16,7 @@ export const useStyles = makeStyles((theme) => ({
 
     [theme.breakpoints.up('sm')]: {
       width: '50vw',
-      justifyContent: 'row-reverse',
-    },
-
-    [theme.breakpoints.up('md')]: {
-      width: '35vw'
-    },
+    }
   },
 
   input: {

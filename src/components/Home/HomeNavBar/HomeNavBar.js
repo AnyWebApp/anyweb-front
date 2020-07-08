@@ -9,12 +9,7 @@ import HomeTabs from '../HomeTabs/HomeTabs'
 import SignInButton from '../../SignInButton'
 import DrawerButton from '../../DrawerButton/DrawerButton';
 
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile
-} from "react-device-detect";
+import { MobileView } from "react-device-detect";
 
 export default function HomeNavBar() {
   const classes = useStyles();
