@@ -4,7 +4,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Drawer, IconButton, Button } from '@material-ui/core';
 import DrawerList from '../Search/DrawerList'
 
-import { useStyles } from './styles'
+import { useStyles, DrawerLogo } from './styles'
 
 export default function DrawerButton() {
   const classes = useStyles();
@@ -21,7 +21,12 @@ export default function DrawerButton() {
     <>
       <Drawer open={drawerState} transitionDuration={450}>
         <IconButton variant="text" color="default" >
-          <img src="../logo.svg" alt="logo" onClick={closeDrawer} className='drawer-logo' />
+          <DrawerLogo
+            src="../logo.svg"
+            alt="logo"
+            onClick={closeDrawer}
+            className='drawer-logo'
+          />
         </IconButton>
         <DrawerList />
       </Drawer>

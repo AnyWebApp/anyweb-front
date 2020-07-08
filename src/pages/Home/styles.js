@@ -5,7 +5,12 @@ export const HomeMain = styled.main`
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-  height: 80vh;
+	height: 80vh;
+
+	@media(min-width: 768px) {
+		height:80vh;
+  }
+	
 `
 
 export const LogoContainer = styled.div`
@@ -14,12 +19,24 @@ export const LogoContainer = styled.div`
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
+
+	@media(min-width: 768px) {
+		height:35%;
+  }
 `
 
 export const LogoImg = styled.img`
-	width: 45%;
+	width: 160px;
+	height:56px;
+
+	@media(min-width: 768px) {
+		width: 272px;
+		height:92px;
+		margin-bottom: 10px;
+  }
 `
 
 
-/* @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
-} */
+/* @media screen and(min - device - width: 1200px) and(max - device - width: 1600px) and(-webkit - min - device - pixel - ratio: 1) {
+}
+ */

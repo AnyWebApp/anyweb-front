@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import styled from 'styled-components'
 
 export const useStyles = makeStyles({
   tabsBox: {
@@ -7,4 +8,7 @@ export const useStyles = makeStyles({
   },
 });
 
-
+export const Nav = styled.nav`
+  display: flex;
+	justify-content: space-between
+`

@@ -5,9 +5,9 @@ import { Footer, Button, Disabled } from './styles';
 const HomeFooter = () => {
   return (
     <Footer>
-      <Disabled>Preferencias</Disabled>
-      <Button>Privacidad</Button>
-      <Button>Condiciones</Button>
+      <Disabled>Settings</Disabled>
+      <Button>Privacy</Button>
+      <Button>Terms</Button>
     </Footer>
   )
 }

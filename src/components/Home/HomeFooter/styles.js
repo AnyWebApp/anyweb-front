@@ -14,11 +14,19 @@ export const Button = styled.button`
   color:#5f6368;
   cursor:pointer;
   font-size: 13px;
+
+  @media(min-width: 768px) {
+		font-size: 16px;
+  }
 `
 
 export const Disabled = styled.p`
   font-size: 13px;
   color:#5f6368;  
+
+  @media(min-width: 768px) {
+		font-size: 16px;
+  }
 `
 
 

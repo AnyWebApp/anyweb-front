@@ -1,7 +1,6 @@
 import React from 'react';
 
-import './styles.css'
-import { useStyles } from './styles'
+import { useStyles, Nav } from './styles'
 
 import AppsIcon from '@material-ui/icons/Apps';
 import { Box, IconButton } from '@material-ui/core';
@@ -10,21 +9,33 @@ import HomeTabs from '../HomeTabs/HomeTabs'
 import SignInButton from '../../SignInButton'
 import DrawerButton from '../../DrawerButton/DrawerButton';
 
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
+
 export default function HomeNavBar() {
   const classes = useStyles();
 
   return (
-    <nav className='home-navbar'>
+    <Nav>
       <Box className={classes.tabsBox}>
-        <DrawerButton />
+        <MobileView>
+          <DrawerButton />
+        </MobileView>
         <HomeTabs />
       </Box>
       <Box>
-        <IconButton variant="text" color="default">
+        <IconButton
+          variant="text"
+          color="default"
+        >
           <AppsIcon />
         </IconButton>
         <SignInButton />
       </Box>
-    </nav>
+    </Nav>
   )
 }

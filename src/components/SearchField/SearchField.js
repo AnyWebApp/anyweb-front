@@ -15,7 +15,7 @@ export default function SearchField(props) {
         inputProps={{ 'aria-label': 'search google' }}
       />
       <IconButton type="submit" className={classes.iconButton} aria-label="search">
-        <SearchIcon style={{ color: 'white' }} />
+        <SearchIcon className={classes.searchIcon} />
       </IconButton>
     </Paper>
   );
