@@ -6,7 +6,7 @@ import { useStyles } from './styles.js'
 export default function HomeTabs({ color }) {
   const [value, setValue] = React.useState(0);
 
-  const handleTabs = (newValue) => {
+  const handleTabs = (value, newValue) => {
     setValue(newValue);
   };
 
