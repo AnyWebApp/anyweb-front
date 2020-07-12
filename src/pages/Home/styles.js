@@ -9,8 +9,7 @@ export const HomeMain = styled.main`
 
 	@media(min-width: 768px) {
 		height:80vh;
-  }
-	
+  }	
 `
 
 export const LogoContainer = styled.div`
@@ -35,8 +34,3 @@ export const LogoImg = styled.img`
 		margin-bottom: 10px;
   }
 `
-
-
-/* @media screen and(min - device - width: 1200px) and(max - device - width: 1600px) and(-webkit - min - device - pixel - ratio: 1) {
-}
- */

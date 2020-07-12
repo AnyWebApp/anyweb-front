@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import HomeNavBar from '../../components/Home/HomeNavBar/HomeNavBar';
-import SearchField from '../../components/SearchField/SearchField';
-import HomeFooter from '../../components/Home/HomeFooter/HomeFooter';
+import HomeNavBar from './components/HomeNavBar/HomeNavBar';
+import SearchField from '../../commons/SearchField/SearchField';
+import HomeFooter from './components/HomeFooter/HomeFooter';
 
 import { HomeMain, LogoContainer, LogoImg } from './styles'
 
@@ -12,7 +12,23 @@ function Home() {
 
   const [isLogin, setIsLogin] = useState(false)
 
+
+
+
   useEffect(() => {
+
+    const getData = async () => {
+      const url = 'https://jsonplaceholder.typicode.com/users/'
+      const resp = await fetch(url)
+      const data = await resp.json()
+
+      data.map(user => {
+        return (
+          console.log(user.name, user.email, user.website)
+        )
+      })
+    }
+
     getData()
 
   }, [])
@@ -26,17 +42,6 @@ function Home() {
     e.preventDefault()
     console.log('submit')
     setIsLogin(true)
-  }
-
-  const getData = async () => {
-    const url = 'https://jsonplaceholder.typicode.com/todos/1'
-    const resp = await fetch(url)
-    const data = await resp.json()
-
-    const imageId = data.id
-    const imageTitle = data.title
-
-    console.table(data)
   }
 
 

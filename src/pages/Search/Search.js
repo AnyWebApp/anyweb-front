@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Container } from './styles'
 
-import SearchNavBar from '../../components/Search/SearchNavBar/SearchNavBar'
-import SearchField from '../../components/SearchField/SearchField'
-import SearchTabs from '../../components/Search/SearchTabs/SearchTabs'
+import SearchNavBar from './components/SearchNavBar/SearchNavBar'
+import SearchField from '../../commons/SearchField/SearchField'
+import SearchTabs from './components/SearchTabs/SearchTabs'
 
 function Search() {
   return (

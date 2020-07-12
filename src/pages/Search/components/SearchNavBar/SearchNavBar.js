@@ -3,8 +3,8 @@ import React from 'react';
 import './styles.css'
 import { Nav } from './styles'
 
-import SignInButton from '../../SignInButton'
-import DrawerButton from '../../DrawerButton/DrawerButton';
+import SignInButton from '../../../../commons/SignInButton'
+import DrawerButton from '../../../../commons/DrawerButton/DrawerButton';
 
 
 export default function SearchNavBar() {
