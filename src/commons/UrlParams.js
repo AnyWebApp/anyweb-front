@@ -7,3 +7,5 @@ const imgRefUrl = urlParams.get('imgrefurl')
 
 console.log(imgUrl)
 console.log(imgRefUrl)
+
+urlParams()
