@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import HomeNavBar from './components/HomeNavBar/HomeNavBar';
 import SearchField from '../../commons/SearchField/SearchField';
@@ -12,53 +12,39 @@ function Home() {
 
   const [isLogin, setIsLogin] = useState(false)
 
-
-
-
-  useEffect(() => {
-
-    const getData = async () => {
-      const url = 'https://jsonplaceholder.typicode.com/users/'
-      const resp = await fetch(url)
-      const data = await resp.json()
-
-      data.map(user => {
-        return (
-          console.log(user.name, user.email, user.website)
-        )
-      })
-    }
-
-    getData()
-
-  }, [])
-
   const handleInputChange = (e) => {
-    setInputValue(e.target.value)
+    setInputValue(e.target.value.toUpperCase())
+
     console.log(inputValue)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('submit')
+  const fetchPin = async () => {
+    const url = '';
+    const fetchOptions = {
+      method: 'GET',
+      body: { 'Pin': inputValue },
+      headers: { 'Content-Type': 'application/json' },
+    };
+
+    fetch(url, fetchOptions)
+      .then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => {
+        console.log(response)
+        sessionStorage.setItem('colaActiva', response.data)
+      }
+      )
+  }
+
+  const handlePin = (e) => {
+    e.preventDefault();
+    fetchPin()
     setIsLogin(true)
   }
 
-
-
   return (
     <>
-      {
-        isLogin
-          ?
-          <HomeNavBar
-            color='primary'
-          />
-          :
-          <HomeNavBar
-            color='secondary'
-          />
-      }
+      {isLogin ? <HomeNavBar color='primary' /> : <HomeNavBar color='secondary' />}
 
       <HomeMain>
         <LogoContainer>
@@ -68,19 +54,20 @@ function Home() {
         {
           isLogin
             ?
+            // Componente para busquedas
             <SearchField
-              onSubmit={handleSubmit}
-              onChange={handleInputChange}
               inputValue={inputValue}
+              placeholder='listo para la busqueda'
             />
             :
+            // componenete para ingresar el PIN
             <SearchField
-              onSubmit={handleSubmit}
+              onSubmit={handlePin}
               onChange={handleInputChange}
               inputValue={inputValue}
+              placeholder='ingresar PIN'
             />
         }
-
 
       </HomeMain>
       <HomeFooter />
