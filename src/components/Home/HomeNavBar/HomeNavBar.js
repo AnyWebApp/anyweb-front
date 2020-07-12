@@ -11,7 +11,7 @@ import DrawerButton from '../../DrawerButton/DrawerButton';
 
 import { MobileView } from "react-device-detect";
 
-export default function HomeNavBar() {
+export default function HomeNavBar({ color }) {
   const classes = useStyles();
 
   return (
@@ -20,7 +20,9 @@ export default function HomeNavBar() {
         <MobileView>
           <DrawerButton />
         </MobileView>
-        <HomeTabs />
+        <HomeTabs
+          color={color}
+        />
       </Box>
       <Box>
         <IconButton

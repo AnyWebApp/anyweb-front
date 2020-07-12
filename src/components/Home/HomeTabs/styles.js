@@ -5,6 +5,6 @@ export const useStyles = makeStyles({
     fonstSize: 12,
     fontWeight: 600,
     minWidth: 0,
-    width: 60
+    width: 60,
   },
 });

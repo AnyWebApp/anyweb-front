@@ -1,17 +1,7 @@
-.app-ul {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style-type: none;
-}
-
-.app-li {
-  padding: 10px;
-  border: 1px solid black;
-  margin: 5px;
-}
-
 .link {
   text-decoration: none;
   color: black;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 5px;
 }

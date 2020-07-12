@@ -10,21 +10,14 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route exact path="/">
+          <Home />
+          <Link to="/search" className='link'>Search</Link>
+        </Route>
         <Route exact path="/search">
           <Search />
         </Route>
-        <Route exact path="/home">
-          <Home />
-        </Route>
       </Switch>
-      <ul className='app-ul'>
-        <li className='app-li'>
-          <Link to="/home" className='link'>Home</Link>
-        </li>
-        <li className='app-li'>
-          <Link to="/search" className='link'>Search</Link>
-        </li>
-      </ul>
     </Router>
   )
 }

@@ -3,25 +3,31 @@ import React from 'react'
 import { Tabs, Tab } from '@material-ui/core';
 import { useStyles } from './styles.js'
 
-export default function HomeTabs() {
-  const [value, setValue] = React.useState(1);
+export default function HomeTabs({ color }) {
+  const [value, setValue] = React.useState(0);
 
-  const handleTabs = (event, newValue) => {
+  const handleTabs = (newValue) => {
     setValue(newValue);
   };
 
-  const classes = useStyles();
+  const classes = useStyles({ color });
 
   return (
     <Tabs
       value={value}
-      indicatorColor='primary'
-      textColor="primary"
+      indicatorColor={color}
+      textColor={color}
       onChange={handleTabs}
-      aria-label=""
+      aria-label="home tabs"
     >
-      <Tab className={classes.root} label="All" />
-      <Tab className={classes.root} label="Images" />
+      <Tab
+        className={classes.root}
+        label="All"
+      />
+      <Tab
+        className={classes.root}
+        label="Images"
+      />
     </Tabs>
   )
 }
