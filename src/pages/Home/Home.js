@@ -54,7 +54,7 @@ function Home() {
         {
           isLogin
             ?
-            // Componente para busquedas
+            // Componente para busquedas s 
             <SearchField
               inputValue={inputValue}
               placeholder='listo para la busqueda'
