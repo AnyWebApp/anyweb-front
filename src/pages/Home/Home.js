@@ -25,7 +25,6 @@ function Home() {
       body: { 'Pin': inputValue },
       headers: { 'Content-Type': 'application/json' },
     };
-
     const pinResponse = await fetch(endpoint);
     const data = await pinResponse.json();
     console.log(data)
@@ -54,6 +53,7 @@ function Home() {
             // Componente para busquedas
             <SearchField
               inputValue={inputValue}
+
               placeholder='listo para la busqueda'
             />
             :

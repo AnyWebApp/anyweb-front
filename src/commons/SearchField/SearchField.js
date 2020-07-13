@@ -24,7 +24,6 @@ export default function SearchField({ onSubmit, onChange, inputValue, placeholde
       <IconButton type="submit" className={classes.iconButton} aria-label="search">
         <SearchIcon className={classes.searchIcon} />
       </IconButton>
-
     </Paper>
   );
 }
