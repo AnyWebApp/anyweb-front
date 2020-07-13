@@ -1,18 +1,17 @@
 import React from 'react';
 
-import './styles.css'
-import { Nav } from './styles'
+import { Nav, useStyles } from './styles'
 
 import SignInButton from '../../../../commons/SignInButton'
 import DrawerButton from '../../../../commons/DrawerButton/DrawerButton';
 
-
 export default function SearchNavBar() {
+  const classes = useStyles();
 
   return (
-    <Nav className='top'>
+    <Nav>
       <DrawerButton />
-      <img src="../logo.svg" alt="logo" className='search-logo' />
+      <img src="../logo.svg" alt="logo" className={classes.searchLogo} />
       <SignInButton />
     </Nav>
 

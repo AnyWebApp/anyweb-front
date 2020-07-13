@@ -19,26 +19,23 @@ function Home() {
   }
 
   const fetchPin = async () => {
-    const url = '';
+    const endpoint = 'https://api.github.com/users/diegobrunetto';
     const fetchOptions = {
       method: 'GET',
       body: { 'Pin': inputValue },
       headers: { 'Content-Type': 'application/json' },
     };
 
-    fetch(url, fetchOptions)
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => {
-        console.log(response)
-        sessionStorage.setItem('colaActiva', response.data)
-      }
-      )
+    const pinResponse = await fetch(endpoint);
+    const data = await pinResponse.json();
+    console.log(data)
+
+    /* if (data.status) */
   }
 
   const handlePin = (e) => {
     e.preventDefault();
-    fetchPin()
+    fetchPin().catch(error => console.error('Error:', error))
     setIsLogin(true)
   }
 
@@ -54,7 +51,7 @@ function Home() {
         {
           isLogin
             ?
-            // Componente para busquedas s 
+            // Componente para busquedas
             <SearchField
               inputValue={inputValue}
               placeholder='listo para la busqueda'
