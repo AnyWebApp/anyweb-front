@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import HomeNavBar from './components/HomeNavBar/HomeNavBar';
 import SearchField from '../../commons/SearchField/SearchField';
-import HomeFooter from './components/HomeFooter/HomeFooter';
+import Footer from '../../commons/Footer/Footer'
 
 import { HomeMain, LogoContainer, LogoImg } from './styles'
 
@@ -67,7 +67,7 @@ function Home() {
         }
 
       </HomeMain>
-      <HomeFooter />
+      <Footer />
     </>
   );
 }

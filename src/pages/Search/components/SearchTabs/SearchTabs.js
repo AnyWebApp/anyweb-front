@@ -57,7 +57,7 @@ export default function ScrollableTabsButtonAuto() {
         textColor="primary"
         variant="scrollable"
         scrollButtons="auto"
-        aria-label="scrollable auto tabs example"
+        aria-label="scrollable_tabs"
         className={classes.tabs}
       >
         <Tab label="All" {...a11yProps(0)} className={classes.tab} />
@@ -69,6 +69,12 @@ export default function ScrollableTabsButtonAuto() {
       </Tabs>
       <Divider className={classes.divider} />
       <TabPanel value={value} index={0}>
+        <SearchCard />
+        <SearchCard />
+        <SearchCard />
+        <SearchCard />
+        <SearchCard />
+        <SearchCard />
         <SearchCard />
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -86,6 +92,7 @@ export default function ScrollableTabsButtonAuto() {
       <TabPanel value={value} index={5}>
         Item Six
       </TabPanel>
+
     </div>
   );
 }

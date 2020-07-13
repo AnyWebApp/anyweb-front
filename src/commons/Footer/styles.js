@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export const Footer = styled.footer`
+export const StyledFooter = styled.footer`
   background: #F2F2F2;
-  height: 80px;
+  height: 13vh;
   width:100%;
   display:flex;
   align-items:center;

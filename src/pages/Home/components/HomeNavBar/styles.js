@@ -11,5 +11,7 @@ export const useStyles = makeStyles({
 
 export const Nav = styled.nav`
   display: flex;
-	justify-content: space-between
+  justify-content: space-between;
+  align-items:center;
+  height:7vh;
 `

@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { Footer, Button, Disabled } from './styles';
+import { StyledFooter, Button, Disabled } from './styles';
 
-const HomeFooter = () => {
+const Footer = () => {
   return (
-    <Footer>
+    <StyledFooter>
       <Disabled>Settings</Disabled>
       <Button>Privacy</Button>
       <Button>Terms</Button>
-    </Footer>
+    </StyledFooter>
   )
 }
 
-export default HomeFooter
+export default Footer
