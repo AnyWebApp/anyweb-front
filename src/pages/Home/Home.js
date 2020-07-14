@@ -2,35 +2,42 @@ import React, { useState } from 'react';
 
 import HomeNavBar from './components/HomeNavBar/HomeNavBar';
 import SearchField from '../../commons/SearchField/SearchField';
-import Footer from '../../commons/Footer/Footer'
+import Footer from '../../commons/Footer/Footer';
 
-import { HomeMain, LogoContainer, LogoImg } from './styles'
+import { HomeMain, LogoContainer, LogoImg } from './styles';
 
 function Home() {
 
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState('');
 
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(false);
 
   const handleInputChange = (e) => {
-    setInputValue(e.target.value.toUpperCase())
+    setInputValue(e.target.value.toUpperCase());
 
     console.log(inputValue)
   }
 
   const fetchPin = async () => {
-    const endpoint = 'https://api.github.com/users/diegobrunetto';
+    const keyToken = 'dametoken';
+    const keyPins = 'pins';
+
+    const endpointToken = `https://any-web-backend.herokuapp.com/api/${keyToken}`;
+    const endpointPins = `https://any-web-backend.herokuapp.com/api/${keyPins}`;
+
     const fetchOptions = {
       method: 'GET',
-      body: { 'Pin': inputValue },
+      mode: 'cors',
+      body: { 'pin': 'AAB' },
       headers: { 'Content-Type': 'application/json' },
     };
-    const pinResponse = await fetch(endpoint);
-    const data = await pinResponse.json();
-    console.log(data)
 
-    /* if (data.status) */
+    const tokenResponse = await fetch(endpointToken);
+    const token = await tokenResponse.json();
+    console.log(token);
   }
+
+  fetchPin()
 
   const handlePin = (e) => {
     e.preventDefault();
