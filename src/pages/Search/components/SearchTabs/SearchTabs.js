@@ -4,7 +4,7 @@ import { useStyles } from './styles';
 
 import { Tabs, Tab, Container, Divider } from '@material-ui/core/';
 
-import SearchCard from '../SearchCard/SearchCard';
+import SearchAll from '../SearchAll/SearchAll';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -69,13 +69,7 @@ export default function ScrollableTabsButtonAuto() {
       </Tabs>
       <Divider className={classes.divider} />
       <TabPanel value={value} index={0}>
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
+        <SearchAll />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two

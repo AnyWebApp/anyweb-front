@@ -30,32 +30,31 @@ function Home() {
 
   const fetchPin = async () => {
     console.log('llamada a pin');
-    const keyPins = 'pins';
-    const endpointPins = `${endpoint}${keyPins}`;
-    const fetchOptions = {
+    const keyPins = 'pins/';
+    const endpointPins = `${endpoint}${keyPins}${inputValue}`;
+    const pinResponse = await fetch(endpointPins);
+    const data = await pinResponse.json();
+    console.log(data);
+    console.log(endpointPins);
+    /* const fetchOptions = {
       method: 'POST',
       mode: 'cors',
       body: { 'pin': 'AAB' },
       headers: { 'Content-Type': 'application/json' },
-    };
-    const pinResponse = await fetch(endpointPins, fetchOptions);
-    const pin = await pinResponse.json();
-    console.log(pin);
-
-    // El request va a tener que ser POST ya que no un GET con body no respeta el protocolo
+    }; */
   }
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value.toUpperCase());
     console.log(inputValue);
+
   }
 
-  fetchToken().catch(error => console.error('Token Error:', error));
+  /*  fetchToken().catch(error => console.error('Token Error:', error)); */
 
   const handlePin = (e) => {
     e.preventDefault();
     fetchPin().catch(error => console.error('Pin Error:', error));
-    setIsLogin(true);
   }
 
   return (
