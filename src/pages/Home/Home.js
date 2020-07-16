@@ -11,11 +11,12 @@ function Home() {
   const [inputValue, setInputValue] = useState('');
   const [isLogged, setisLogged] = useState(false);
   const [token, setToken] = useState('');
+  const [userActiveLinks, setUserActiveLinks] = useState([])
   // todo a un .env
   const endpoint = 'https://any-web-backend.herokuapp.com/api/';
   const keyToken = 'dametoken';
   const keyPins = 'pins/';
-
+  //-----------
   const endpointToken = `${endpoint}${keyToken}`;
   const endpointPins = `${endpoint}${keyPins}${inputValue}`;
   const fetchPinOptions = {
@@ -30,7 +31,7 @@ function Home() {
   const history = useHistory();
 
   useEffect(() => {
-    fetchToken()
+    fetchToken();
   }, []);
 
   const fetchToken = async () => {
@@ -44,8 +45,8 @@ function Home() {
     const data = await pinResponse.json();
     if (pinResponse.status === 200) {
       setisLogged(true);
+      setUserActiveLinks(data.pinData)
     }
-    console.log(data.pinData);
   };
 
   const handlePinChange = (e) => {
@@ -55,7 +56,7 @@ function Home() {
   const handlePinSubmit = (e) => {
     e.preventDefault();
     setInputValue('');
-    console.log(inputValue)
+    console.log(inputValue);
     fetchPin().catch(error => console.error('Pin Error:', error));
   }
 
@@ -66,6 +67,7 @@ function Home() {
     setInputValue(e.target.value)
   }
 
+  console.log(userActiveLinks);
 
   return (
     <>
