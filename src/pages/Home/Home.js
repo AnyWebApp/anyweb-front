@@ -5,7 +5,7 @@ import HomeNavBar from './components/HomeNavBar/HomeNavBar';
 import SearchField from '../../commons/SearchField/SearchField';
 import Footer from '../../commons/Footer/Footer';
 
-import { HomeMain, LogoContainer, LogoImg } from './styles';
+import { HomeContainer, HomeMain, LogoContainer, LogoImg } from './styles';
 
 function Home() {
   const [inputValue, setInputValue] = useState('');
@@ -32,6 +32,7 @@ function Home() {
 
   useEffect(() => {
     fetchToken();
+    // eslint-disable-next-line
   }, []);
 
   const fetchToken = async () => {
@@ -70,7 +71,7 @@ function Home() {
   console.log(userActiveLinks);
 
   return (
-    <>
+    <HomeContainer>
       {isLogged ? <HomeNavBar color='primary' /> : <HomeNavBar color='secondary' />}
       <HomeMain>
         <LogoContainer>
@@ -95,7 +96,7 @@ function Home() {
         }
       </HomeMain>
       <Footer />
-    </>
+    </HomeContainer>
   );
 }
 

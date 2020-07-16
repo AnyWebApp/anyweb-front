@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { useStyles } from './styles'
 
-/* import perro1 from '../../../../assets/images/perro-1.png'*/
+/* import perro1 from '../../../../assets/images/perro-1.png' */
 import perro2 from '../../../../assets/images/perro-2.jpg'
 
 export default function SearchImagesCard() {
@@ -16,17 +16,24 @@ export default function SearchImagesCard() {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea className={classes.action}>
         <CardMedia
           className={classes.media}
           image={perro2}
           title="Perro 1"
         />
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="h2">
-            Lizard
+        <CardContent className={classes.content}>
+          <Typography
+            gutterBottom variant="h6" component="h2"
+            className={classes.title}
+          >
+            25 nombres para perros inspiradores
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography
+            variant="body2" color="textSecondary"
+            component="p"
+            className={classes.url}
+          >
             www.perro1.com
           </Typography>
         </CardContent>

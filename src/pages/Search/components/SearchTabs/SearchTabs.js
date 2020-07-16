@@ -76,16 +76,16 @@ export default function ScrollableTabsButtonAuto() {
         <SearchImages />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Videos
+        <SearchAll />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Maps
+        <SearchAll />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        News
+        <SearchAll />
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Shopping
+        <SearchAll />
       </TabPanel>
 
     </div>

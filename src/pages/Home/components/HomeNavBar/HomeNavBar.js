@@ -9,8 +9,6 @@ import HomeTabs from '../HomeTabs/HomeTabs';
 import SignInButton from '../../../../commons/SignInButton';
 import DrawerButton from '../../../../commons/DrawerButton/DrawerButton';
 
-import { MobileView } from "react-device-detect";
-
 export default function HomeNavBar({ color }) {
 
   const classes = useStyles();
@@ -18,9 +16,7 @@ export default function HomeNavBar({ color }) {
   return (
     <Nav>
       <Box className={classes.tabsBox}>
-        <MobileView>
-          <DrawerButton />
-        </MobileView>
+        <DrawerButton />
         <HomeTabs
           color={color}
         />
