@@ -8,18 +8,18 @@ import { HomeMain, LogoContainer, LogoImg } from './styles';
 
 function Home() {
   const [inputValue, setInputValue] = useState('');
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogged, setisLogged] = useState('');
   const [token, setToken] = useState('');
 
   const endpoint = 'https://any-web-backend.herokuapp.com/api/';
 
   const fetchToken = async () => {
-    console.log('llamada a token');
     const keyToken = 'dametoken';
     const endpointToken = `${endpoint}${keyToken}`;
     const tokenResponse = await fetch(endpointToken);
     const newToken = await tokenResponse.json();
     setToken(newToken.token)
+
     console.log(token);
   }
 
@@ -32,12 +32,14 @@ function Home() {
     const fetchOptions = {
       method: 'GET',
       mode: 'cors',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
     };
     const pinResponse = await fetch(endpointPins, fetchOptions);
     const data = await pinResponse.json();
-    console.log(data);
-    console.log(endpointPins);
+    console.log(data.pinData);
   }
 
   const handleInputChange = (e) => {
@@ -48,24 +50,25 @@ function Home() {
   const handlePin = (e) => {
     e.preventDefault();
     fetchPin().catch(error => console.error('Pin Error:', error));
+    setisLogged('loggedIn')
   }
 
   return (
     <>
-      {isLogin ? <HomeNavBar color='primary' /> : <HomeNavBar color='secondary' />}
+      {isLogged ? <HomeNavBar color='primary' /> : <HomeNavBar color='secondary' />}
       <HomeMain>
         <LogoContainer>
           <LogoImg src="/logo.svg" alt="logo" className='main-logo' />
         </LogoContainer>
         {
-          isLogin
-            ?// Componente para busquedas
+          (isLogged === 'loggedIn')
+            ?
             <SearchField
               inputValue={inputValue}
               placeholder='listo para la busqueda'
             />
             :
-            <SearchField // componenete para ingresar el PIN
+            <SearchField
               onSubmit={handlePin}
               onChange={handleInputChange}
               inputValue={inputValue}

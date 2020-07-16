@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useStyles, Nav } from './styles'
 
@@ -12,6 +12,7 @@ import DrawerButton from '../../../../commons/DrawerButton/DrawerButton';
 import { MobileView } from "react-device-detect";
 
 export default function HomeNavBar({ color }) {
+
   const classes = useStyles();
 
   return (
