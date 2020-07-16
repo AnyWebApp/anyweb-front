@@ -6,10 +6,6 @@ export const HomeMain = styled.main`
 	align-items: center;
 	justify-content: flex-start;
 	height: 80vh;
-
-	@media(min-width: 768px) {
-		height:80vh;
-  }	
 `
 
 export const LogoContainer = styled.div`

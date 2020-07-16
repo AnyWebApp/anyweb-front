@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { useStyles, Nav } from './styles'
+import { useStyles, Nav } from './styles';
 
 import AppsIcon from '@material-ui/icons/Apps';
 import { Box, IconButton } from '@material-ui/core';
 
-import HomeTabs from '../HomeTabs/HomeTabs'
-import SignInButton from '../../../../commons/SignInButton'
+import HomeTabs from '../HomeTabs/HomeTabs';
+import SignInButton from '../../../../commons/SignInButton';
 import DrawerButton from '../../../../commons/DrawerButton/DrawerButton';
 
 import { MobileView } from "react-device-detect";

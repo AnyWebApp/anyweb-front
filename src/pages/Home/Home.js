@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
 import HomeNavBar from './components/HomeNavBar/HomeNavBar';
 import SearchField from '../../commons/SearchField/SearchField';
@@ -6,25 +7,65 @@ import Footer from '../../commons/Footer/Footer';
 
 import { HomeMain, LogoContainer, LogoImg } from './styles';
 
-import { fetchToken, fetchPin } from './utils'
-
 function Home() {
   const [inputValue, setInputValue] = useState('');
-  const [isLogged, setisLogged] = useState('');
+  const [isLogged, setisLogged] = useState(false);
   const [token, setToken] = useState('');
+  // todo a un .env
+  const endpoint = 'https://any-web-backend.herokuapp.com/api/';
+  const keyToken = 'dametoken';
+  const keyPins = 'pins/';
 
-  fetchToken()
+  const endpointToken = `${endpoint}${keyToken}`;
+  const endpointPins = `${endpoint}${keyPins}${inputValue}`;
+  const fetchPinOptions = {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+  };
+  //-------------------//
+  const history = useHistory();
 
-  const handleInputChange = (e) => {
+  useEffect(() => {
+    fetchToken()
+  }, []);
+
+  const fetchToken = async () => {
+    const tokenResponse = await fetch(endpointToken);
+    const newToken = await tokenResponse.json();
+    setToken(newToken.token);
+  };
+
+  const fetchPin = async () => {
+    const pinResponse = await fetch(endpointPins, fetchPinOptions);
+    const data = await pinResponse.json();
+    if (pinResponse.status === 200) {
+      setisLogged(true);
+    }
+    console.log(data.pinData);
+  };
+
+  const handlePinChange = (e) => {
     setInputValue(e.target.value.toUpperCase());
-    console.log(inputValue);
   }
 
-  const handlePin = (e) => {
+  const handlePinSubmit = (e) => {
     e.preventDefault();
+    setInputValue('');
+    console.log(inputValue)
     fetchPin().catch(error => console.error('Pin Error:', error));
-    setisLogged('loggedIn')
   }
+
+  const handleSearchSubmit = () => {
+    history.push("/search");
+  }
+  const handleSearchChange = (e) => {
+    setInputValue(e.target.value)
+  }
+
 
   return (
     <>
@@ -34,16 +75,18 @@ function Home() {
           <LogoImg src="/logo.svg" alt="logo" className='main-logo' />
         </LogoContainer>
         {
-          (isLogged === 'loggedIn')
+          isLogged
             ?
             <SearchField
               inputValue={inputValue}
               placeholder='listo para la busqueda'
+              onClick={handleSearchSubmit}
+              onChange={handleSearchChange}
             />
             :
             <SearchField
-              onSubmit={handlePin}
-              onChange={handleInputChange}
+              onSubmit={handlePinSubmit}
+              onChange={handlePinChange}
               inputValue={inputValue}
               placeholder='ingresar PIN'
             />

@@ -5,6 +5,10 @@ import styled from 'styled-components';
 export const useStyles = makeStyles({
   searchLogo: {
     height: '35px',
+  },
+  searchLogoButton: {
+    border: 'none',
+    background: 'white'
   }
 });
 
