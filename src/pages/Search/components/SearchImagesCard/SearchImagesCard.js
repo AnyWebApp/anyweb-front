@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { useStyles } from './styles'
 
-import perro1 from '../../../../assets/images/perro-1.png'
+/* import perro1 from '../../../../assets/images/perro-1.png'*/
 import perro2 from '../../../../assets/images/perro-2.jpg'
 
 export default function SearchImagesCard() {
