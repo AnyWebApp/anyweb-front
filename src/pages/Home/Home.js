@@ -8,45 +8,44 @@ import Footer from '../../commons/Footer/Footer';
 import { HomeContainer, HomeMain, LogoContainer, LogoImg } from './styles';
 
 function Home() {
+  const endpoint = process.env.REACT_APP_ENDPOINT;
+  const keyToken = process.env.REACT_APP_TOKEN;
+  const keyPins = process.env.REACT_APP_PIN;
+
   const [inputValue, setInputValue] = useState('');
   const [isLogged, setisLogged] = useState(false);
-  const [token, setToken] = useState('');
-  const [userActiveLinks, setUserActiveLinks] = useState([])
-  // todo a un .env
-  const endpoint = 'https://any-web-backend.herokuapp.com/api/';
-  const keyToken = 'dametoken';
-  const keyPins = 'pins/';
-  //-----------
-  const endpointToken = `${endpoint}${keyToken}`;
-  const endpointPins = `${endpoint}${keyPins}${inputValue}`;
-  const fetchPinOptions = {
-    method: 'GET',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    },
-  };
-  //-------------------//
+
   const history = useHistory();
+
+  const fetchToken = async () => {
+    const endpointToken = `${endpoint}${keyToken}`;
+    const tokenResponse = await fetch(endpointToken);
+    const newToken = await tokenResponse.json();
+    sessionStorage.setItem('token', newToken.token);
+  };
 
   useEffect(() => {
     fetchToken();
     // eslint-disable-next-line
   }, []);
 
-  const fetchToken = async () => {
-    const tokenResponse = await fetch(endpointToken);
-    const newToken = await tokenResponse.json();
-    setToken(newToken.token);
-  };
+  const token = sessionStorage.getItem('token')
 
   const fetchPin = async () => {
+    const endpointPins = `${endpoint}${keyPins}/${inputValue}`;
+    const fetchPinOptions = {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    };
     const pinResponse = await fetch(endpointPins, fetchPinOptions);
-    const data = await pinResponse.json();
+    const dataString = JSON.stringify(await pinResponse.json());
     if (pinResponse.status === 200) {
       setisLogged(true);
-      setUserActiveLinks(data.pinData)
+      sessionStorage.setItem('linksData', dataString);
     }
   };
 
@@ -54,21 +53,19 @@ function Home() {
     setInputValue(e.target.value.toUpperCase());
   }
 
-  const handlePinSubmit = (e) => {
+  const handlePinSubmit = async (e) => {
     e.preventDefault();
     setInputValue('');
-    console.log(inputValue);
-    fetchPin().catch(error => console.error('Pin Error:', error));
+    await fetchPin().catch(error => console.error('Pin Error:', error));
   }
 
   const handleSearchSubmit = () => {
     history.push("/search");
   }
+
   const handleSearchChange = (e) => {
     setInputValue(e.target.value)
   }
-
-  console.log(userActiveLinks);
 
   return (
     <HomeContainer>

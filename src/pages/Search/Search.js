@@ -12,12 +12,12 @@ import Footer from '../../commons/Footer/Footer';
 function Search() {
   const history = useHistory();
 
+  /* const userData = JSON.parse(sessionStorage.getItem('linksData')).pinData;
+  const links = userData.map(link => <p key={link.id}>{link.linkname}</p>) */
+
   const handleHomeClick = () => {
     history.push("/");
   };
-
-  /*   console.log(token);
-    console.log(userActiveLinks); */
 
   return (
     <Container>
