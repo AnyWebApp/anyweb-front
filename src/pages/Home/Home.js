@@ -11,7 +11,9 @@ function Home() {
 
   const [inputValue, setInputValue] = useState('');
   const [isLogged, setisLogged] = useState(false);
-  const token = sessionStorage.getItem('token');
+  const [userActiveLinks, setUserActiveLinks] = useState([])
+  const [token, setToken] = useState('');
+  /* const token = sessionStorage.getItem('token'); */
 
   // todo a un .env
   const endpoint = 'https://any-web-backend.herokuapp.com/api/';
@@ -39,20 +41,23 @@ function Home() {
   const fetchToken = async () => {
     const tokenResponse = await fetch(endpointToken);
     const newToken = await tokenResponse.json();
-    sessionStorage.setItem('token', newToken.token);
+    setToken(newToken.token);
+    /*  sessionStorage.setItem('token', newToken.token); */
   };
 
   const fetchPin = async () => {
     const pinResponse = await fetch(endpointPins, fetchPinOptions);
     const data = await pinResponse.json();
-    console.log(`data desde la api: ${data}`)
     if (pinResponse.status === 200) {
       setisLogged(true);
-      sessionStorage.setItem('data', data);
-      const activeLinks = sessionStorage.getItem('data');
+      setUserActiveLinks(data)
+      console.log(pinResponse)
+
+      /* sessionStorage.setItem('data', data); */
+      /* const activeLinks = sessionStorage.getItem('data');
       console.log(`data json: ${activeLinks}`)
       const parse = JSON.parse(activeLinks)
-      console.log(`data in session: ${parse}`);
+      console.log(`data in session: ${parse}`); */
     }
   };
 
@@ -75,7 +80,7 @@ function Home() {
   }
 
   console.log(`token in session: ${token}`);
-
+  console.log(`data: ${userActiveLinks}`);
   return (
     <HomeContainer>
       {isLogged ? <HomeNavBar color='primary' /> : <HomeNavBar color='secondary' />}
