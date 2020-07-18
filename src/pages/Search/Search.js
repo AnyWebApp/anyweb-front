@@ -16,6 +16,9 @@ function Search() {
     history.push("/");
   };
 
+  /*   console.log(token);
+    console.log(userActiveLinks); */
+
   return (
     <Container>
       <SearchNavBar onClick={handleHomeClick} />

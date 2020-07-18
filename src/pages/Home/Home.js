@@ -8,15 +8,16 @@ import Footer from '../../commons/Footer/Footer';
 import { HomeContainer, HomeMain, LogoContainer, LogoImg } from './styles';
 
 function Home() {
+
   const [inputValue, setInputValue] = useState('');
   const [isLogged, setisLogged] = useState(false);
-  const [token, setToken] = useState('');
-  const [userActiveLinks, setUserActiveLinks] = useState([])
+  const token = sessionStorage.getItem('token');
+
   // todo a un .env
   const endpoint = 'https://any-web-backend.herokuapp.com/api/';
   const keyToken = 'dametoken';
   const keyPins = 'pins/';
-  //-----------
+
   const endpointToken = `${endpoint}${keyToken}`;
   const endpointPins = `${endpoint}${keyPins}${inputValue}`;
   const fetchPinOptions = {
@@ -27,7 +28,7 @@ function Home() {
       'Authorization': `Bearer ${token}`
     },
   };
-  //-------------------//
+
   const history = useHistory();
 
   useEffect(() => {
@@ -38,15 +39,20 @@ function Home() {
   const fetchToken = async () => {
     const tokenResponse = await fetch(endpointToken);
     const newToken = await tokenResponse.json();
-    setToken(newToken.token);
+    sessionStorage.setItem('token', newToken.token);
   };
 
   const fetchPin = async () => {
     const pinResponse = await fetch(endpointPins, fetchPinOptions);
     const data = await pinResponse.json();
+    console.log(`data desde la api: ${data}`)
     if (pinResponse.status === 200) {
       setisLogged(true);
-      setUserActiveLinks(data.pinData)
+      sessionStorage.setItem('data', data);
+      const activeLinks = sessionStorage.getItem('data');
+      console.log(`data json: ${activeLinks}`)
+      const parse = JSON.parse(activeLinks)
+      console.log(`data in session: ${parse}`);
     }
   };
 
@@ -57,18 +63,18 @@ function Home() {
   const handlePinSubmit = (e) => {
     e.preventDefault();
     setInputValue('');
-    console.log(inputValue);
     fetchPin().catch(error => console.error('Pin Error:', error));
   }
 
   const handleSearchSubmit = () => {
     history.push("/search");
   }
+
   const handleSearchChange = (e) => {
     setInputValue(e.target.value)
   }
 
-  console.log(userActiveLinks);
+  console.log(`token in session: ${token}`);
 
   return (
     <HomeContainer>
