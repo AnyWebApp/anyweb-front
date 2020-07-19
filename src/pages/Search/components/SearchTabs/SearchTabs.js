@@ -41,7 +41,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ScrollableTabsButtonAuto() {
+export default function ScrollableTabsButtonAuto({ currentSearch }) {
   const classes = useStyles();
 
   const [value, setValue] = React.useState(0);
@@ -75,7 +75,7 @@ export default function ScrollableTabsButtonAuto() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <SearchImagesFilters />
-        <SearchImages />
+        <SearchImages currentSearch={currentSearch} />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <SearchAll />

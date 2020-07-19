@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React/* , { useState, useEffect } */ from 'react';
 import { useHistory } from "react-router-dom";
 
 import HomeNavBar from './components/HomeNavBar/HomeNavBar';
@@ -7,74 +7,11 @@ import Footer from '../../commons/Footer/Footer';
 
 import { HomeContainer, HomeMain, LogoContainer, LogoImg } from './styles';
 
-function Home() {
-  const endpoint = process.env.REACT_APP_ENDPOINT;
-  /* const searchEndpoint = process.env.REACT_APP_ENDPOINT; */
-  const keyToken = process.env.REACT_APP_TOKEN;
-  const keyPins = process.env.REACT_APP_PIN;
+function Home({ onPinChange, onPinSubmit, onSearcheChange, onSearchSubmit, isLogged, inputValue }) {
 
-  const [inputValue, setInputValue] = useState('');
-  const [isLogged, setisLogged] = useState(false);
-  /* const [currentSearch, setCurrentSearch] = useState([]) */
-
-  const history = useHistory();
-
-  const fetchToken = async () => {
-    const endpointToken = `${endpoint}${keyToken}`;
-    const tokenResponse = await fetch(endpointToken);
-    const newToken = await tokenResponse.json();
-    sessionStorage.setItem('token', newToken.token);
-  };
-
-  useEffect(() => {
-    fetchToken();
-    // eslint-disable-next-line
-  }, []);
-
-  const token = sessionStorage.getItem('token')
-
-  const fetchPin = async () => {
-    const endpointPins = `${endpoint}${keyPins}/${inputValue}`;
-    const fetchPinOptions = {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-    };
-    const pinResponse = await fetch(endpointPins, fetchPinOptions);
-    const dataString = JSON.stringify(await pinResponse.json());
-    if (pinResponse.status === 200) {
-      setisLogged(true);
-      sessionStorage.setItem('linksData', dataString);
-    }
-  };
-
-  /* const fetchSearch = async () => {
-    const endpointSearch = `${endpoint}/${inputValue}`;
-    const searchResponse = await fetch(endpointSearch);
-    const newSearchResponse = await searchResponse.json();
-    setCurrentSearch(newSearchResponse)
-  }; */
-
-  const handlePinChange = (e) => {
-    setInputValue(e.target.value.toUpperCase());
-  }
-
-  const handlePinSubmit = async (e) => {
-    e.preventDefault();
-    setInputValue('');
-    await fetchPin().catch(error => console.error('Pin Error:', error));
-  }
-
-  const handleSearchSubmit = () => {
-    /* fetchSearch() */
+  const history = useHistory()
+  const handleRoot = () => {
     history.push("/search");
-  }
-
-  const handleSearchChange = (e) => {
-    setInputValue(e.target.value)
   }
 
   return (
@@ -90,17 +27,18 @@ function Home() {
             <SearchField
               inputValue={inputValue}
               placeholder='listo para la busqueda'
-              onClick={handleSearchSubmit}
-              onChange={handleSearchChange}
+              onClick={onSearchSubmit}
+              onChange={onSearcheChange}
             />
             :
             <SearchField
-              onSubmit={handlePinSubmit}
-              onChange={handlePinChange}
+              onSubmit={onPinSubmit}
+              onChange={onPinChange}
               inputValue={inputValue}
               placeholder='ingresar PIN'
             />
         }
+        <button onClick={handleRoot}>search</button>
       </HomeMain>
       <Footer />
     </HomeContainer>

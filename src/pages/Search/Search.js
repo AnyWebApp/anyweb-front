@@ -9,11 +9,10 @@ import SearchTabs from './components/SearchTabs/SearchTabs';
 import Footer from '../../commons/Footer/Footer';
 
 
-function Search() {
+function Search({ inputValue, currentSearch, onSearchSubmit, onSearcheChange }) {
   const history = useHistory();
 
-  /* const userData = JSON.parse(sessionStorage.getItem('linksData')).pinData;
-  const links = userData.map(link => <p key={link.id}>{link.linkname}</p>) */
+  console.log(currentSearch)
 
   const handleHomeClick = () => {
     history.push("/");
@@ -22,8 +21,12 @@ function Search() {
   return (
     <Container>
       <SearchNavBar onClick={handleHomeClick} />
-      <SearchField />
-      <SearchTabs />
+      <SearchField
+        inputValue={inputValue}
+        onClick={onSearchSubmit}
+        onChange={onSearcheChange}
+      />
+      <SearchTabs currentSearch={currentSearch} />
       <Footer />
     </Container>
   );
