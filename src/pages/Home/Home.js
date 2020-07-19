@@ -9,11 +9,13 @@ import { HomeContainer, HomeMain, LogoContainer, LogoImg } from './styles';
 
 function Home() {
   const endpoint = process.env.REACT_APP_ENDPOINT;
+  /* const searchEndpoint = process.env.REACT_APP_ENDPOINT; */
   const keyToken = process.env.REACT_APP_TOKEN;
   const keyPins = process.env.REACT_APP_PIN;
 
   const [inputValue, setInputValue] = useState('');
   const [isLogged, setisLogged] = useState(false);
+  /* const [currentSearch, setCurrentSearch] = useState([]) */
 
   const history = useHistory();
 
@@ -49,6 +51,13 @@ function Home() {
     }
   };
 
+  /* const fetchSearch = async () => {
+    const endpointSearch = `${endpoint}/${inputValue}`;
+    const searchResponse = await fetch(endpointSearch);
+    const newSearchResponse = await searchResponse.json();
+    setCurrentSearch(newSearchResponse)
+  }; */
+
   const handlePinChange = (e) => {
     setInputValue(e.target.value.toUpperCase());
   }
@@ -60,6 +69,7 @@ function Home() {
   }
 
   const handleSearchSubmit = () => {
+    /* fetchSearch() */
     history.push("/search");
   }
 
