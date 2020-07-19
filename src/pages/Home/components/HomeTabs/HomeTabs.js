@@ -18,7 +18,7 @@ export default function HomeTabs({ color }) {
       indicatorColor={color}
       textColor={color}
       onChange={handleTabs}
-      aria-label="home tabs"
+      aria-label="home-tabs"
     >
       <Tab
         className={classes.root}

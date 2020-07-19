@@ -10,6 +10,7 @@ export default function SearchAllCard() {
   return (
     <Card className={classes.root}>
       <CardContent >
+        {/*  hardcodeado provisorio */}
         <Typography className={classes.url} gutterBottom>
           https://www.google.com
         </Typography>
