@@ -6,6 +6,7 @@ import { Tabs, Tab, Container, Divider } from '@material-ui/core/';
 
 import SearchAll from '../SearchAll/SearchAll';
 import SearchImages from '../SearchImages/SearchImages';
+import SearchImagesFilters from '../SearchImagesFilters/SearchImagesFilters';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -73,6 +74,7 @@ export default function ScrollableTabsButtonAuto() {
         <SearchAll />
       </TabPanel>
       <TabPanel value={value} index={1}>
+        <SearchImagesFilters />
         <SearchImages />
       </TabPanel>
       <TabPanel value={value} index={2}>
