@@ -9,7 +9,8 @@ import { HomeContainer, HomeMain, LogoContainer, LogoImg } from './styles';
 
 function Home({ onPinChange, onPinSubmit, onSearcheChange, onSearchSubmit, isLogged, inputValue }) {
 
-  const history = useHistory()
+  const history = useHistory();
+
   const handleRoot = () => {
     history.push("/search");
   }

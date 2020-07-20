@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-/* import { useRouteMatch } from "react-router-dom"; */
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -10,11 +9,11 @@ function App() {
   const endpoint = process.env.REACT_APP_ENDPOINT;
   const keyToken = process.env.REACT_APP_TOKEN;
   const keyPins = process.env.REACT_APP_PIN;
-  const searchEndpoint = process.env.REACT_APP_ENDPOINT;
+  const searchEndpoint = process.env.REACT_APP_SEARCHENDPOINT;
 
   const [inputValue, setInputValue] = useState('');
   const [isLogged, setisLogged] = useState(false);
-  const [currentSearch, setCurrentSearch] = useState([])
+  const [currentSearch, setCurrentSearch] = useState()
 
   const fetchToken = async () => {
     const endpointToken = `${endpoint}${keyToken}`;
@@ -60,7 +59,7 @@ function App() {
     const endpointSearch = `${searchEndpoint}`;
     const searchResponse = await fetch(endpointSearch, fetchSearchOptions);
     const newSearchResponse = await searchResponse.json();
-    setCurrentSearch(newSearchResponse)
+    setCurrentSearch(newSearchResponse);
   };
 
   const handlePinChange = (e) => {

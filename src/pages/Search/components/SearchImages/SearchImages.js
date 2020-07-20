@@ -4,15 +4,20 @@ import SearchImagesCard from '../SearchImagesCard/SearchImagesCard';
 import { StyledDiv } from './styles';
 
 const SearchImages = ({ currentSearch }) => {
-  console.log(currentSearch)
+  console.log('current search:' + currentSearch)
   const searchArray = currentSearch;
-  console.log(searchArray)
-  /* const links = searchArray.map(link => <SearchImagesCard key={link.title}>{link.title}</SearchImagesCard>)
+
+  /* const links = searchArray.map(link => 
+    <SearchImagesCard key={link.title}>{link.title}</SearchImagesCard>
+    )
  */
+
   return (
     <StyledDiv>
-
-      {/* {links} */}
+      <SearchImagesCard />
+      <SearchImagesCard />
+      <SearchImagesCard />
+      <SearchImagesCard />
     </StyledDiv>
   )
 };
