@@ -4,7 +4,9 @@ import { useStyles } from './styles';
 
 import { Tabs, Tab, Container, Divider } from '@material-ui/core/';
 
-import SearchCard from '../SearchCard/SearchCard';
+import SearchAll from '../SearchAll/SearchAll';
+import SearchImages from '../SearchImages/SearchImages';
+import SearchImagesFilters from '../SearchImagesFilters/SearchImagesFilters';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,7 +41,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ScrollableTabsButtonAuto() {
+export default function ScrollableTabsButtonAuto({ currentSearch }) {
   const classes = useStyles();
 
   const [value, setValue] = React.useState(0);
@@ -69,28 +71,23 @@ export default function ScrollableTabsButtonAuto() {
       </Tabs>
       <Divider className={classes.divider} />
       <TabPanel value={value} index={0}>
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
-        <SearchCard />
+        <SearchAll />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <SearchImagesFilters />
+        <SearchImages currentSearch={currentSearch} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <SearchAll />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        <SearchAll />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+        <SearchAll />
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        <SearchAll />
       </TabPanel>
 
     </div>

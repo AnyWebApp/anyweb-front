@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
   background: #F2F2F2;
-  height: 13vh;
+  height: 13%;
   width:100%;
   display:flex;
   align-items:center;
@@ -14,6 +14,7 @@ export const Button = styled.button`
   color:#5f6368;
   cursor:pointer;
   font-size: 13px;
+  background-color:#F2F2F2;
 
   @media(min-width: 768px) {
 		font-size: 15px;

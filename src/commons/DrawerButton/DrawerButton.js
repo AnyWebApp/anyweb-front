@@ -1,5 +1,4 @@
 import React from 'react';
-
 import MenuIcon from '@material-ui/icons/Menu';
 import { Drawer, IconButton, Button } from '@material-ui/core';
 import DrawerList from '../DrawerList'
@@ -10,28 +9,24 @@ export default function DrawerButton() {
   const classes = useStyles();
   const [drawerState, setState] = React.useState(false);
 
-  const openDrawer = () => {
-    setState(true)
-  }
-  const closeDrawer = () => {
-    setState(false)
+  const toggleDrawer = () => {
+    drawerState ? setState(false) : setState(true)
   }
 
   return (
     <>
-      <Drawer open={drawerState} transitionDuration={450} onClick={closeDrawer}>
+      <Drawer open={drawerState} transitionDuration={450} onClick={toggleDrawer}>
         <IconButton variant="text" color="default" >
           <DrawerLogo
             src="../logo.svg"
             alt="logo"
-            onClick={closeDrawer}
             className='drawer-logo'
           />
         </IconButton>
         <DrawerList />
 
       </Drawer>
-      <Button onClick={openDrawer} size='small' className={classes.menuIcon}>
+      <Button onClick={toggleDrawer} size='small' className={classes.menuIcon}>
         <MenuIcon color='action' />
       </Button>
     </>

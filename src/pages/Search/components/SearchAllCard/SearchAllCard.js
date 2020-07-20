@@ -4,12 +4,13 @@ import { Card, CardContent, Typography } from '@material-ui/core';
 
 import { useStyles } from './styles'
 
-export default function SearchCard() {
+export default function SearchAllCard() {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardContent >
+        {/*  hardcodeado provisorio */}
         <Typography className={classes.url} gutterBottom>
           https://www.google.com
         </Typography>

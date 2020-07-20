@@ -1,0 +1,1 @@
+export const imagesFilters = ['Latest', 'GIF', 'HD', 'Product', 'Color']
