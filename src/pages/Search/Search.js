@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from "react-router-dom";
-
 import { Container } from './styles';
-
+import { Context } from '../../Context';
 import SearchNavBar from './components/SearchNavBar/SearchNavBar';
 import SearchField from '../../commons/SearchField/SearchField';
 import SearchTabs from './components/SearchTabs/SearchTabs';
 import Footer from '../../commons/Footer/Footer';
 
-
-function Search({ inputValue, currentSearch, onSearchSubmit, onSearcheChange }) {
+function Search({ inputValue, onSearchSubmit, onSearcheChange }) {
   const history = useHistory();
 
-  console.log(currentSearch)
+  const searchContext = useContext(Context);
 
   const handleHomeClick = () => {
     history.push("/");
@@ -26,7 +24,7 @@ function Search({ inputValue, currentSearch, onSearchSubmit, onSearcheChange }) 
         onClick={onSearchSubmit}
         onChange={onSearcheChange}
       />
-      <SearchTabs currentSearch={currentSearch} />
+      <SearchTabs currentSearch={searchContext.currentSearch} />
       <Footer />
     </Container>
   );

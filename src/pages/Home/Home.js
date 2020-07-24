@@ -1,19 +1,10 @@
-import React/* , { useState, useEffect } */ from 'react';
-import { useHistory } from "react-router-dom";
-
+import React from 'react';
 import HomeNavBar from './components/HomeNavBar/HomeNavBar';
 import SearchField from '../../commons/SearchField/SearchField';
 import Footer from '../../commons/Footer/Footer';
-
 import { HomeContainer, HomeMain, LogoContainer, LogoImg } from './styles';
 
-function Home({ onPinChange, onPinSubmit, onSearcheChange, onSearchSubmit, isLogged, inputValue }) {
-
-  const history = useHistory();
-
-  const handleRoot = () => {
-    history.push("/search");
-  }
+function Home({ isLogged, inputValue, onSearchSubmit, onSearcheChange, onPinChange, onPinSubmit }) {
 
   return (
     <HomeContainer>
@@ -39,7 +30,6 @@ function Home({ onPinChange, onPinSubmit, onSearcheChange, onSearchSubmit, isLog
               placeholder='ingresar PIN'
             />
         }
-        <button onClick={handleRoot}>search</button>
       </HomeMain>
       <Footer />
     </HomeContainer>

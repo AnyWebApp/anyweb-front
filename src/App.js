@@ -1,65 +1,40 @@
-import React, { useState, useEffect } from 'react';
-
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import React, { useState } from 'react';
+import { Context } from './Context';
+import axios from 'axios';
+import { Switch, Route, useHistory } from "react-router-dom";
+import { endpoint, keyPin, keySearch, fetchOptions } from './constants';
 import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
 
+
 function App() {
-  const endpoint = process.env.REACT_APP_ENDPOINT;
-  const keyToken = process.env.REACT_APP_TOKEN;
-  const keyPins = process.env.REACT_APP_PIN;
-  const searchEndpoint = process.env.REACT_APP_SEARCHENDPOINT;
+  const history = useHistory()
 
   const [inputValue, setInputValue] = useState('');
-  const [isLogged, setisLogged] = useState(false);
-  const [currentSearch, setCurrentSearch] = useState()
+  const [isLogged, setIsLogged] = useState(false);
+  const [currentSearch, setCurrentSearch] = useState([]);
 
-  const fetchToken = async () => {
-    const endpointToken = `${endpoint}${keyToken}`;
-    const tokenResponse = await fetch(endpointToken);
-    const newToken = await tokenResponse.json();
-    sessionStorage.setItem('token', newToken.token);
-  };
-
-  useEffect(() => {
-    fetchToken();
-    // eslint-disable-next-line
-  }, []);
-
-  const token = sessionStorage.getItem('token')
-
-  const fetchPin = async () => {
-    const endpointPins = `${endpoint}${keyPins}/${inputValue}`;
-    const fetchPinOptions = {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-    };
-    const pinResponse = await fetch(endpointPins, fetchPinOptions);
-    const dataString = JSON.stringify(await pinResponse.json());
-    if (pinResponse.status === 200) {
-      setisLogged(true);
+  const getUserData = async () => {
+    const endpointPins = `${endpoint}pins/${inputValue}`;
+    try {
+      const userData = await axios.get(endpointPins, fetchOptions);
+      setIsLogged(true);
+      const dataString = JSON.stringify(userData);
       sessionStorage.setItem('linksData', dataString);
+
+    } catch (error) {
+      console.error(error)
     }
   };
 
-  const fetchSearch = async () => {
-    const fetchSearchOptions = {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-    };
-    const endpointSearch = `${searchEndpoint}`;
-    const searchResponse = await fetch(endpointSearch, fetchSearchOptions);
-    const newSearchResponse = await searchResponse.json();
-    setCurrentSearch(newSearchResponse);
+  const getCurrentSearch = async () => {
+    try {
+      const endpointSearch = `${endpoint}${keySearch}`;
+      const searchResponse = await axios.get(endpointSearch, fetchOptions);
+      setCurrentSearch(searchResponse);
+    } catch (error) {
+      console.error(error)
+    }
   };
 
   const handlePinChange = (e) => {
@@ -69,12 +44,14 @@ function App() {
   const handlePinSubmit = async (e) => {
     e.preventDefault();
     setInputValue('');
-    await fetchPin().catch(error => console.error('Pin Error:', error));
+    await getUserData().catch(error => console.error('Pin Error:', error));
   }
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
-    fetchSearch()
+    getCurrentSearch()
+    history.push('/search')
+    console.log('search: ' + inputValue)
   }
 
   const handleSearchChange = (e) => {
@@ -82,7 +59,18 @@ function App() {
   }
 
   return (
-    <Router>
+    <Context.Provider value={{
+      currentSearch,
+      setCurrentSearch,
+      inputValue,
+      setInputValue,
+      handleSearchChange,
+      handleSearchSubmit,
+      getCurrentSearch,
+      handlePinChange,
+      handlePinSubmit,
+      isLogged
+    }}>
       <Switch>
         <Route exact path="/">
           <Home
@@ -96,12 +84,14 @@ function App() {
         </Route>
         <Route exact path="/search">
           <Search
+            onSearcheChange={handleSearchChange}
+            onSearchSubmit={handleSearchSubmit}
             inputValue={inputValue}
-            currentSearch={currentSearch}
           />
         </Route>
       </Switch>
-    </Router>
+
+    </Context.Provider >
   )
 }
 
