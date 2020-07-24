@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { Context } from '../../../../Context'
-
+import { Context } from '../../../../Context';
 import SearchImagesCard from '../SearchImagesCard/SearchImagesCard';
 import { StyledDiv } from './styles';
 
@@ -8,19 +7,20 @@ const SearchImages = () => {
 
   const searchContext = useContext(Context);
 
-  console.log(searchContext)
+  const searchData = searchContext.currentSearch.data.dataM
 
-  /* const links = searchArray.map(link => 
-    <SearchImagesCard key={link.title}>{link.title}</SearchImagesCard>
-    )
- */
+  const items = searchData.map(item =>
+    <SearchImagesCard
+      key={item.title}
+      image={item.link}
+      title={item.title}
+      contextLink={item.contextLink}
+    />
+  )
 
   return (
     <StyledDiv>
-      <SearchImagesCard />
-      <SearchImagesCard />
-      <SearchImagesCard />
-      <SearchImagesCard />
+      {items}
     </StyledDiv>
   )
 };

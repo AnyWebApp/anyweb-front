@@ -1,10 +1,11 @@
 import React from 'react';
+import { Context } from '../../Context';
 import HomeNavBar from './components/HomeNavBar/HomeNavBar';
 import SearchField from '../../commons/SearchField/SearchField';
 import Footer from '../../commons/Footer/Footer';
 import { HomeContainer, HomeMain, LogoContainer, LogoImg } from './styles';
 
-function Home({ isLogged, inputValue, onSearchSubmit, onSearcheChange, onPinChange, onPinSubmit }) {
+function Home({ inputValue, onSearchSubmit, onSearcheChange, onPinChange, onPinSubmit, isLogged }) {
 
   return (
     <HomeContainer>
@@ -33,7 +34,8 @@ function Home({ isLogged, inputValue, onSearchSubmit, onSearcheChange, onPinChan
       </HomeMain>
       <Footer />
     </HomeContainer>
-  );
+  )
+    ;
 }
 
 export default Home;

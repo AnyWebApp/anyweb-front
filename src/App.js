@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Context } from './Context';
 import axios from 'axios';
+import { endpoint, keySearch, fetchOptions } from './constants';
 import { Switch, Route, useHistory } from "react-router-dom";
-import { endpoint, keyPin, keySearch, fetchOptions } from './constants';
 import Home from './pages/Home/Home';
 import Search from './pages/Search/Search';
 
-
 function App() {
+
   const history = useHistory()
 
   const [inputValue, setInputValue] = useState('');
@@ -57,6 +57,7 @@ function App() {
   const handleSearchChange = (e) => {
     setInputValue(e.target.value)
   }
+
 
   return (
     <Context.Provider value={{
